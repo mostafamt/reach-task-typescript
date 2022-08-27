@@ -16,7 +16,7 @@ function Body({ videos, count, loading, setLoading }: PropTypes) {
     <div className={styles.background}>
       <div className={styles.body}>
         <HeaderResult count={count} />
-        <hr />
+        {count ? <hr /> : <></>}
         <List videos={videos} loading={loading} setLoading={setLoading} />
       </div>
     </div>
