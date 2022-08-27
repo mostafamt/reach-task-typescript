@@ -1,6 +1,7 @@
 import React from "react";
 import Box from "./Box";
 import styles from "../styles/List.module.css";
+import HeaderResult from "./HeaderResult";
 
 interface PropTypes {
   videos: any;
@@ -8,9 +9,7 @@ interface PropTypes {
 
 function List({ videos }: PropTypes) {
   return (
-    <div
-      className={[styles.list, videos.length > 0 ? styles.py : ""].join(" ")}
-    >
+    <div className={styles.list}>
       {videos.map((item: any, idx: number) => {
         return <Box key={idx} item={item} />;
       })}

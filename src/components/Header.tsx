@@ -8,9 +8,27 @@ interface PropTypes {
   searchValue: string;
   setSearchValue: any;
   submitHandler: any;
+  isSearch: boolean;
+  setIsSearch: any;
+  getVideos: any;
 }
 
-function Header({ searchValue, setSearchValue, submitHandler }: PropTypes) {
+function Header({
+  searchValue,
+  setSearchValue,
+  submitHandler,
+  isSearch,
+  setIsSearch,
+  getVideos,
+}: PropTypes) {
+  const clickHandler = () => {
+    if (isSearch) {
+      setIsSearch(false);
+    } else {
+      getVideos(searchValue);
+    }
+  };
+
   return (
     <div className={styles.header}>
       <div className={styles.header_left}>
@@ -19,13 +37,17 @@ function Header({ searchValue, setSearchValue, submitHandler }: PropTypes) {
       </div>
 
       <form className={styles.actions} onSubmit={submitHandler}>
-        <input
-          type="text"
-          className={styles.textInput}
-          placeholder="search"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
+        {isSearch ? (
+          <p className={styles.searchText}>{searchValue}</p>
+        ) : (
+          <input
+            type="text"
+            className={styles.textInput}
+            placeholder="search"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+          />
+        )}
         <button className={styles.searchButton}>
           <FiSearch className={styles.search_logo} />
         </button>
@@ -33,6 +55,9 @@ function Header({ searchValue, setSearchValue, submitHandler }: PropTypes) {
       <div className={styles.profile}>
         <img src={imgSrc} alt="profile" className={styles.profile_pic} />
       </div>
+      <button className={styles.searchButton_sm} onClick={clickHandler}>
+        <FiSearch className={styles.search_logo} />
+      </button>
     </div>
   );
 }

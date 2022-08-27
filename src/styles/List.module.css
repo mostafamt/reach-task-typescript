@@ -1,13 +1,11 @@
 .list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0rem 0;
-  /* padding-top: 1rem; */
-  background-color: rgba(0, 0, 0, 0.03);
-  min-height: 100vh;
+  align-items: flex-start;
 }
 
-.py {
-  padding-top: 10px;
+@media only screen and (max-width: 900px) {
+  .list {
+    align-items: center;
+  }
 }

@@ -1,0 +1,20 @@
+.background {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.body {
+  min-height: 96vh;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
+}
+
+.headerResult {
+  height: 70px;
+  background-color: chocolate;
+}
+
+.list {
+  height: 900px;
+  background-color: cornflowerblue;
+}

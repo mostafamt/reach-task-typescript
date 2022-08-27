@@ -17,14 +17,13 @@ function Box({ item }: any) {
     );
   } else {
     thumb = (
-      //-c8LoR84Xjs
-      // https://www.youtube.com/embed/-c8LoR84Xjs
       <Iframe
         url={`https://www.youtube.com/embed/${item.id.videoId}`}
         width="360px"
         height="201px"
         allowFullScreen
-        // frameBorder={0}
+        frameBorder={0}
+        className={styles.iframe}
       ></Iframe>
     );
   }
@@ -32,6 +31,7 @@ function Box({ item }: any) {
   return (
     <div className={styles.box}>
       <div className={styles.video}>{thumb}</div>
+
       <div className={styles.box_description}>
         <h4>{item.snippet.title}</h4>
         <p>{item.snippet.description}</p>
