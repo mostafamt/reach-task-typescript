@@ -8,6 +8,7 @@ function Home() {
   const [videos, setVideos] = React.useState<[]>([]);
   const [count, setCount] = React.useState<number>(0);
   const [isSearch, setIsSearch] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ function Home() {
   };
 
   const getVideos = async (value: string) => {
+    setLoading(true);
     if (document.body.clientWidth <= 400) {
       setIsSearch(!isSearch);
     }
@@ -38,7 +40,12 @@ function Home() {
         setIsSearch={setIsSearch}
         getVideos={getVideos}
       />
-      <Body videos={videos} count={count} />
+      <Body
+        videos={videos}
+        count={count}
+        loading={loading}
+        setLoading={setLoading}
+      />
     </>
   );
 }
